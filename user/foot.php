@@ -18,6 +18,6 @@
 <script src="https://template.down.swap.wang/ui/angulr_2.0.1/html/js/ui-jp.js"></script>
 <script src="https://template.down.swap.wang/ui/angulr_2.0.1/html/js/ui-nav.js"></script>
 <script src="https://template.down.swap.wang/ui/angulr_2.0.1/html/js/ui-toggle.js"></script>
-<script src="http://ie.swapteam.cn/ie.js"></script>
+<script src="assets/js/ie.js"></script>
 </body>
 </html>
