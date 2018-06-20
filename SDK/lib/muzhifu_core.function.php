@@ -15,13 +15,12 @@
  * return 拼接完成以后的字符串
  */
 function createLinkstring($para) {
-	$arg  = "";
-	while (list ($key, $val) = each ($para)) {
-		$arg.=$key."=".$val."&";
-	}
+	$arg = "";
+	foreach ($para as $key => $val){
+        $arg .= "$key=$val&";
+    }
 	//去掉最后一个&字符
-	$arg = substr($arg,0,count($arg)-2);
-	
+	$arg = substr($arg,0,strlen($arg) - 1);
 	//如果存在转义字符，那么去掉转义
 	if(get_magic_quotes_gpc()){$arg = stripslashes($arg);}
 	
@@ -33,12 +32,12 @@ function createLinkstring($para) {
  * return 拼接完成以后的字符串
  */
 function createLinkstringUrlencode($para) {
-	$arg  = "";
-	while (list ($key, $val) = each ($para)) {
-		$arg.=$key."=".urlencode($val)."&";
-	}
+	$arg = "";
+    foreach ($para as $key => $val){
+        $arg .= "$key=" . urlencode($val) . "&";
+    }
 	//去掉最后一个&字符
-	$arg = substr($arg,0,count($arg)-2);
+	$arg = substr($arg,0,strlen($arg) - 1);
 	
 	//如果存在转义字符，那么去掉转义
 	if(get_magic_quotes_gpc()){$arg = stripslashes($arg);}
@@ -51,11 +50,11 @@ function createLinkstringUrlencode($para) {
  * return 去掉空值与签名参数后的新签名参数组
  */
 function paraFilter($para) {
-	$para_filter = array();
-	while (list ($key, $val) = each ($para)) {
-		if($key == "sign" || $key == "sign_type" || $val == "")continue;
-		else	$para_filter[$key] = $para[$key];
-	}
+	$para_filter = [];
+    foreach ($para as $key => $val){
+        if($key == "sign" || $key == "sign_type" || $val == "")continue;
+        else	$para_filter[$key] = $para[$key];
+    }
 	return $para_filter;
 }
 /**

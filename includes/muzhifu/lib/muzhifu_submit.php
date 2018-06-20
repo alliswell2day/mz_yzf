@@ -35,7 +35,7 @@ class Muzhifu
     public static function sign($params, $app_key)
     {
         $para_filter = array();
-        while (list ($key, $val) = each ($params)) {
+        foreach ($params as $key => $val){
             if($key == "sign" || $key == "sign_type" || $val == "")continue;
             else    $para_filter[$key] = $params[$key];
         }
@@ -45,15 +45,15 @@ class Muzhifu
 
         $arg  = "";
 
-        while (list ($key, $val) = each ($para_filter)) {
+        foreach ($para_filter as $key => $val){
             // 不是数组的时候才会组合，否则传入数组会出错
             if (!is_array($val)) {
-                $arg.=$key."=".$val."&";
+                $arg .= "$key=$val&";
             }
         }
 
         //去掉最后一个&字符
-        $arg = substr($arg,0,count($arg)-2);
+        $arg = substr($arg,0,strlen($arg) - 1);
         //如果存在转义字符，那么去掉转义
         if(get_magic_quotes_gpc()){
             $arg = stripslashes($arg);
