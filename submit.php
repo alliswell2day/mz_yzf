@@ -46,7 +46,6 @@ $notify_url=daddslashes($dataarr['notify_url']);
 $return_url=daddslashes($dataarr['return_url']);
 $name=daddslashes($dataarr['name']);
 $money=daddslashes($dataarr['money']);
-$sitename=urlencode(base64_encode(daddslashes($dataarr['sitename'])));
 
 if(empty($out_trade_no))sysmsg('订单号(out_trade_no)不能为空');
 if(empty($notify_url))sysmsg('通知地址(notify_url)不能为空');
@@ -56,13 +55,13 @@ if(empty($money))sysmsg('金额(money)不能为空');
 if($money<=0)sysmsg('金额不合法');
 $trade_no=date("YmdHis").rand(11111,99999);
 $domain=getdomain($notify_url);
-if(!$DB->query("insert into `pay_order` (`trade_no`,`out_trade_no`,`notify_url`,`return_url`,`type`,`pid`,`addtime`,`name`,`money`,`domain`,`ip`,`status`) values ('".$trade_no."','".$out_trade_no."','".$notify_url."','".$return_url."','".$type."','".$pid."','".$date."','".$name."','".$money."','".$domain."','".$clientip."','0')"))exit('创建订单失败，请返回重试！');
-
-	//echo $tyep;
 	if($type=='alipay')$zftype='alipay.trade.precreate';//支付宝支付
 	elseif($type=='qqpay')$zftype='qq.pay.native';//QQ支付
 	elseif($type=='wxpay')$zftype='wxpay.pay.unifiedorder';//微信支付
 	else $zftype='alipay.trade.precreate';//默认支付宝支付
+if(!$DB->query("insert into `pay_order` (`trade_no`,`out_trade_no`,`notify_url`,`return_url`,`type`,`pid`,`addtime`,`name`,`money`,`domain`,`ip`,`status`) values ('".$trade_no."','".$out_trade_no."','".$notify_url."','".$return_url."','".$type."','".$pid."','".$date."','".$name."','".$money."','".$domain."','".$clientip."','0')"))exit('创建订单失败，请返回重试！');
+
+	//echo $tyep;
 
 	$params =   [
 	    'appid'        =>  $muzhifu_config['partner'],
