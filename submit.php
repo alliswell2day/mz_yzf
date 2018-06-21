@@ -58,7 +58,6 @@ $trade_no=date("YmdHis").rand(11111,99999);
 $domain=getdomain($notify_url);
 if(!$DB->query("insert into `pay_order` (`trade_no`,`out_trade_no`,`notify_url`,`return_url`,`type`,`pid`,`addtime`,`name`,`money`,`domain`,`ip`,`status`) values ('".$trade_no."','".$out_trade_no."','".$notify_url."','".$return_url."','".$type."','".$pid."','".$date."','".$name."','".$money."','".$domain."','".$clientip."','0')"))exit('创建订单失败，请返回重试！');
 
-if(!empty($type)){
 	//echo $tyep;
 	if($type=='alipay')$zftype='alipay.trade.precreate';//支付宝支付
 	elseif($type=='qqpay')$zftype='qq.pay.native';//QQ支付
@@ -101,9 +100,7 @@ if(!empty($type)){
 	} else {
 	    exit($res->msg);
 	}
-	}else{
-	echo "<script>window.location.href='./default.php?trade_no={$trade_no}';</script>";
-}
+
 
 ?>
 <p>正在为您跳转到支付页面，请稍候...</p>

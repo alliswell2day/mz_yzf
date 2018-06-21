@@ -58,12 +58,16 @@ $DB->query("update `pay_order` set `type` ='$type',`addtime` ='$date' where `tra
 	    exit('出现问题：'.$http);
 	
 	}
-	if (isset($res->url)) {
-		header('Location: '.$res->url);
-	} else {
-	    exit($res->msg);
-	}
-	echo "<script>window.location.href='./default.php?trade_no={$trade_no}&sitename={$sitename}';</script>";
+if (isset($res->url)) {
+    if ($res->type == '1') {
+        echo $res->url;
+    } else {
+        header('Location: '.$res->url);
+    }
+} else {
+    exit($res->msg);
+}
+
 ?>
 <p>正在为您跳转到支付页面，请稍候...</p>
 </body>
