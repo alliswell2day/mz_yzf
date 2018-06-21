@@ -21,6 +21,9 @@ class Muzhifu
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        if(checkmobile() == true) {
+            curl_setopt($ch, CURLOPT_USERAGENT, "Dalvik/1.6.0 (Linux; U; Android 4.1.2; DROID RAZR HD Build/9.8.1Q-62_VQW_MR-2)");
+        }
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
         $res = curl_exec($ch);
         return $res;

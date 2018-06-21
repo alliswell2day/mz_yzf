@@ -93,12 +93,16 @@ if(!empty($type)){
 	}
 
 	if (isset($res->url)) {
-		header('Location: '.$res->url);
+        if ($res->type == '1') {
+            echo $res->url;
+        } else {
+            header('Location: '.$res->url);
+        }
 	} else {
 	    exit($res->msg);
 	}
 	}else{
-	echo "<script>window.location.href='./default.php?trade_no={$trade_no}&sitename={$sitename}';</script>";
+	echo "<script>window.location.href='./default.php?trade_no={$trade_no}';</script>";
 }
 
 ?>
