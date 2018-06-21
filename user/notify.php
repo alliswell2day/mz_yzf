@@ -2,7 +2,7 @@
 require_once('../includes/common.php');
 $alipay_config['partner'] = $conf['reg_pid'];
 $alipay_config['key'] = $DB->query("SELECT `key` FROM `pay_user` WHERE `id`='{$conf['reg_pid']}' limit 1")->fetchColumn();
-require_once("./epay_notify.class.php");
+require_once("./mzhipay_notify.class.php");
 
 //计算得出通知验证结果
 $alipayNotify = new AlipayNotify($alipay_config);
