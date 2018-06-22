@@ -49,20 +49,20 @@ $data['settlemoney']=$allmoney;
 $lastday=date("Y-m-d",strtotime("-1 day")).' 00:00:00';
 $today=date("Y-m-d").' 00:00:00';
 $rs=$DB->query("SELECT * from pay_order where status=1 and endtime>='$today'");
-$order_today=array('alipay'=>0,'tenpay'=>0,'qqpay'=>0,'wxpay'=>0,'all'=>0);
+$order_today=array('alipay.trade.precreate'=>0,'tenpay.trade.precreate'=>0,'qq.pay.native'=>0,'wxpay.pay.unifiedorder'=>0,'all'=>0);
 while($row = $rs->fetch())
 {
 	$order_today[$row['type']]+=$row['money'];
 }
-$order_today['all']=$order_today['alipay']+$order_today['tenpay']+$order_today['qqpay']+$order_today['wxpay'];
+$order_today['all']=$order_today['alipay.trade.precreate']+$order_today['tenpay.trade.precreate']+$order_today['qq.pay.native']+$order_today['wxpay.pay.unifiedorder'];
 
 $rs=$DB->query("SELECT * from pay_order where status=1 and endtime>='$lastday' and endtime<'$today'");
-$order_lastday=array('alipay'=>0,'tenpay'=>0,'qqpay'=>0,'wxpay'=>0,'all'=>0);
+$order_lastday=array('alipay.trade.precreate'=>0,'tenpay.trade.precreate'=>0,'qq.pay.native'=>0,'wxpay.pay.unifiedorder'=>0,'all'=>0);
 while($row = $rs->fetch())
 {
 	$order_lastday[$row['type']]+=$row['money'];
 }
-$order_lastday['all']=$order_lastday['alipay']+$order_lastday['tenpay']+$order_lastday['qqpay']+$order_lastday['wxpay'];
+$order_lastday['all']=$order_today['alipay.trade.precreate']+$order_today['tenpay.trade.precreate']+$order_today['qq.pay.native']+$order_today['wxpay.pay.unifiedorder'];
 
 $data['order_today']=$order_today;
 $data['order_lastday']=$order_lastday;

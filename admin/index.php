@@ -59,8 +59,8 @@ $mysqlversion=$DB->query("select VERSION()")->fetch();
           <table class="table table-bordered table-striped">
 		    <thead><tr><th class="success">订单收入统计</th><th>支付宝</th><th>微信支付</th><th>QQ钱包</th><th>财付通</th><th>总计</th></thead>
             <tbody>
-			  <tr><td>今日</td><td><?php echo round($data['order_today']['alipay'],2)?></td><td><?php echo round($data['order_today']['wxpay'],2)?></td><td><?php echo round($data['order_today']['qqpay'],2)?></td><td><?php echo round($data['order_today']['tenpay'],2)?></td><td><?php echo round($data['order_today']['all'],2)?></td></tr>
-			  <tr><td>昨日</td><td><?php echo round($data['order_lastday']['alipay'],2)?></td><td><?php echo round($data['order_lastday']['wxpay'],2)?></td><td><?php echo round($data['order_lastday']['qqpay'],2)?></td><td><?php echo round($data['order_lastday']['tenpay'],2)?></td><td><?php echo round($data['order_lastday']['all'],2)?></td></tr>
+			  <tr><td>今日</td><td><?php echo round($data['order_today']['alipay.trade.precreate'],2)?></td><td><?php echo round($data['order_today']['wxpay.pay.unifiedorder'],2)?></td><td><?php echo round($data['order_today']['qq.pay.native'],2)?></td><td><?php echo round($data['order_today']['tenpay.trade.precreate'],2)?></td><td><?php echo round($data['order_today']['all'],2)?></td></tr>
+			  <tr><td>昨日</td><td><?php echo round($data['order_lastday']['alipay.trade.precreate'],2)?></td><td><?php echo round($data['order_lastday']['wxpay.pay.unifiedorder'],2)?></td><td><?php echo round($data['order_lastday']['qq.pay.native'],2)?></td><td><?php echo round($data['order_lastday']['tenpay.trade.precreate'],2)?></td><td><?php echo round($data['order_lastday']['all'],2)?></td></tr>
 			</tbody>
           </table>
       </div>
