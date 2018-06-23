@@ -324,9 +324,9 @@ if($e==0) {
 		<label for="name">当前网址域名(一般默认):</label>
 		<input type="text" class="form-control" id="domain" value="{$url}">
 		<label for="name">拇指付用户ID:</label>
-		<input type="text" class="form-control" id="appid" value="{$json['id']}">
+		<input type="text" class="form-control" id="id" value="{$json['id']}">
 		<label for="name">拇指付APPID:</label>
-		<input type="text" class="form-control" id="id" value="{$json['appid']}">
+		<input type="text" class="form-control" id="appid" value="{$json['appid']}">
 		<label for="name">拇指付access_token:</label>
 		<input type="text" class="form-control" id="access_token" value="{$json['access_token']}">
 		<br><input type="submit" class="btn btn-primary btn-block" onclick="connect()" value="远程连接"><br/>
@@ -426,7 +426,7 @@ if(file_put_contents('../includes/mzf_config.php',$configx)){
 <?php
 	@file_put_contents("install.lock",'安装锁');
 	unlink("../includes/json.txt");
-	echo '<div class="alert alert-success"><font color="green">安装完成！管理账号和密码是:admin/admin</font><br/><br/><a href="../">>>网站首页</a>｜<a href="../admin/">>>后台管理</a><hr/>更多设置选项请登录后台管理进行修改。<br/><br/><font color="#FF0033">如果你的空间不支持本地文件读写，请自行在install/ 目录建立 install.lock 文件和删除includes/json.txt文件！</font></div>';
+	echo '<div class="alert alert-success"><font color="green">安装完成！管理账号和密码是:admin/admin</font><br/><br/><a href="../">>>网站首页</a>｜<a href="../admin/">>>后台管理</a><hr/>更多设置选项请登录后台管理进行修改。<br/><br/><font color="#FF0033">如果你的空间不支持本地文件读写，请自行在install/ 目录建立 install.lock 文件和删除includes/json.txt！</font></div>';
 }
 ?>
 	</div>
