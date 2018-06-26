@@ -73,7 +73,7 @@ $http_to = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
 		'out_trade_no'	=>	$trade_no,
 		'subject'		=>	$name,
 		'total_amount'	=>	$money,
-		"notify_url"	=> $http_to.$conf['local_domain'].'/pay_notify.php',
+		"notify_url"	=> $http_to.$_SERVER['HTTP_HOST'].'/pay_notify.php',
 		"return_url"	=> $http_to.$_SERVER['HTTP_HOST'].'/pay_return.php'
 	]);
 
