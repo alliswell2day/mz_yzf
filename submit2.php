@@ -35,6 +35,7 @@ if(!$row)exit('该订单号不存在，请返回来源地重新发起请求！')
 	elseif($type=='wxpay')$type='wxpay.pay.unifiedorder';//微信支付
 	else $type='alipay.trade.precreate';//默认支付宝支付
 $DB->query("update `pay_order` set `type` ='$type',`addtime` ='$date' where `trade_no`='$trade_no'");
+	$http_to = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
 	$params =   [
 	    'appid'        =>  $muzhifu_config['partner'],
 	    'type'        =>  $type,
@@ -44,8 +45,8 @@ $DB->query("update `pay_order` set `type` ='$type',`addtime` ='$date' where `tra
 		'out_trade_no'	=>	$trade_no,
 		'subject'		=>	$row['name'],
 		'total_amount'	=>	$row['money'],
-		"notify_url"	=> 'http://'.$conf['local_domain'].'/pay_notify.php',//异步通知不建议采用cdn
-		"return_url"	=> 'http://'.$_SERVER['HTTP_HOST'].'/pay_return.php'
+		"notify_url"	=> $http_to.$_SERVER['HTTP_HOST'].'/pay_notify.php',//异步通知不建议采用cdn
+		"return_url"	=> $http_to.$_SERVER['HTTP_HOST'].'/pay_return.php'
 	]);
 	// 获得签名
 	$sign = Muzhifu::sign($params, $muzhifu_config['key']);
