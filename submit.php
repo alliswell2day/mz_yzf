@@ -60,7 +60,7 @@ $domain=getdomain($notify_url);
 	elseif($type=='wxpay')$type='wxpay.pay.unifiedorder';//微信支付
 	else $type='alipay.trade.precreate';//默认支付宝支付
 if(!$DB->query("insert into `pay_order` (`trade_no`,`out_trade_no`,`notify_url`,`return_url`,`type`,`pid`,`addtime`,`name`,`money`,`domain`,`ip`,`status`) values ('".$trade_no."','".$out_trade_no."','".$notify_url."','".$return_url."','".$type."','".$pid."','".$date."','".$name."','".$money."','".$domain."','".$clientip."','0')"))exit('创建订单失败，请返回重试！');
-
+$http_to = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
 	//echo $tyep;
 
 	$params =   [
@@ -73,8 +73,8 @@ if(!$DB->query("insert into `pay_order` (`trade_no`,`out_trade_no`,`notify_url`,
 		'out_trade_no'	=>	$trade_no,
 		'subject'		=>	$name,
 		'total_amount'	=>	$money,
-		"notify_url"	=> 'http://'.$conf['local_domain'].'/pay_notify.php',
-		"return_url"	=> 'http://'.$_SERVER['HTTP_HOST'].'/pay_return.php'
+		"notify_url"	=> $http_to.$conf['local_domain'].'/pay_notify.php',
+		"return_url"	=> $http_to.$_SERVER['HTTP_HOST'].'/pay_return.php'
 	]);
 
 	// 获得签名
