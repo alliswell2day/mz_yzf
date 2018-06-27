@@ -156,7 +156,7 @@ elseif($act=='orders')
 elseif($act=='check_status')
 {
 	include "/includes/muzhifu/muzhifu_config.php";
-	$appid=intval($_GET['apppid']);
+	$appid=intval($_GET['appid']);
 	$appkey=daddslashes($_GET['appkey']);
 	if($appid = $muzhifu_config['partner'] && $appkey = $muzhifu_config['key'])
 	{
