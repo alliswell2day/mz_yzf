@@ -153,8 +153,18 @@ elseif($act=='orders')
 		$result=array("code"=>-3,"msg"=>"PID不存在");
 	}
 }
-else
+elseif($act=='check_status')
 {
+	include "/includes/muzhifu/muzhifu_config.php";
+	$appid=intval($_GET['apppid']);
+	$appkey=daddslashes($_GET['appkey']);
+	if($appid = $muzhifu_config['partner'] && $appkey = $muzhifu_config['key'])
+	{
+		$result=array("code"=>1,"msg"=>"对接拇指付易支付状态正常！");		
+	}else{
+	       $result=array("code"=>-1,"msg"=>"对接拇指付易支付接口失败！");
+	}
+}else{
 	$result=array("code"=>-5,"msg"=>"No Act!");
 }
 
