@@ -18,7 +18,7 @@ require_once("./includes/muzhifu/lib/muzhifu_submit.php");
 <?php
 $sign = Muzhifu::sign($_GET, $muzhifu_config['key']);
 if ($sign == $_GET['sign']) {
-    if ($app_id == $_GET['app_id']) {
+    if ($muzhifu_config['partner'] == $_GET['pid']) {
         $out_trade_no = $_GET['out_trade_no'];
         $trade_no = $_GET['trade_no'];
         $trade_status = $_GET['trade_status'];
@@ -29,7 +29,7 @@ if ($sign == $_GET['sign']) {
             $DB->query("update pay_user set money=money+{$addmoney} where id='{$srow['pid']}'");
             $url = creat_callback($srow);
             curl_get($url['notify']);
-            proxy_get($url['notify']);
+            //proxy_get($url['notify']);
         }
         echo 'success';
     }
@@ -51,7 +51,7 @@ if ($sign == $_GET['sign']) {
         sysmsg('未成功支付！' . "out_trade_no=" . $out_trade_no);
     }
 } else {
-    sysmsg('验证失败' . "out_trade_no=" . $srow['out_trade_no']);
+    sysmsg('验证失败' . "out_trade_no=" . $out_trade_no);
 }
 ?>
 </body>
