@@ -1,6 +1,7 @@
 <?php
 //error_reporting(E_ALL); ini_set("display_errors", 1);
 error_reporting(0);
+header("content-type:text/html;charset=utf-8");
 define('SYSTEM_ROOT', dirname(__FILE__).'/');
 define('ROOT', dirname(SYSTEM_ROOT).'/');
 date_default_timezone_set('Asia/Shanghai');
@@ -15,9 +16,10 @@ $siteurl = ($_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://').$_SERVER[
 if(is_file(SYSTEM_ROOT.'360safe/360webscan.php')){//360网站卫士
     require_once(SYSTEM_ROOT.'360safe/360webscan.php');
 }
-
+if(!is_file(SYSTEM_ROOT.'config.php')){
+    exit("网站还未安装，请访问/install进行安装！");
+}
 require SYSTEM_ROOT.'config.php';
-//require SYSTEM_ROOT.'mz_config.php';
 try {
     $DB = new PDO("mysql:host={$dbconfig['host']};dbname={$dbconfig['dbname']};port={$dbconfig['port']}",$dbconfig['user'],$dbconfig['pwd']);
 }catch(Exception $e){

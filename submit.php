@@ -66,7 +66,8 @@ $http_to = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
 	$params =   [
 	    'appid'        =>  $muzhifu_config['partner'],
 	    'type'        =>  $type,
-	    'addtime'     =>  date('Y-m-d H:i:s')
+	    'addtime'     =>  date('Y-m-d H:i:s'),
+        'mz_type'      => '1' //0 默认方式 or 1 本地扫码方式
 	];
 
 	$params['mz_content'] = json_encode([
@@ -76,7 +77,9 @@ $http_to = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
 		"notify_url"	=> $http_to.$_SERVER['HTTP_HOST'].'/pay_notify.php',
 		"return_url"	=> $http_to.$_SERVER['HTTP_HOST'].'/pay_return.php'
 	]);
-
+if($params['mz_type'] == '1'){
+    $params['mz_domain'] = $http_to.$_SERVER['HTTP_HOST'];
+}
 	// 获得签名
 	$sign = Muzhifu::sign($params, $muzhifu_config['key']);
 	$params['sign'] = $sign;
@@ -96,7 +99,7 @@ $http_to = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
             header('Location: '.$res->url);
         }
 	} else {
-	    exit($res->msg);
+	    exit('出现问题：'.$res->msg);
 	}
 
 
