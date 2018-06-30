@@ -4,7 +4,7 @@ CREATE TABLE `pay_order` (
 `out_trade_no` varchar(64) NOT NULL,
 `notify_url` varchar(64) DEFAULT NULL,
 `return_url` varchar(64) DEFAULT NULL,
-`type` varchar(20) NOT NULL,
+`type` varchar(50) NOT NULL,
 `buyer` varchar(30) DEFAULT NULL,
 `pid` int(11) NOT NULL,
 `addtime` datetime DEFAULT NULL,
