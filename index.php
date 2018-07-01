@@ -12,9 +12,9 @@ include ("./includes/common.php");
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Content-Language" content="zh-cn">
-    <title><?=$conf['web_name']?> - 免签约支付平台 - 拇指付易支付,1分钟快速接入支付功能</title>
-    <meta name="description" content="<?=$conf['web_name']?>是一个和彩虹易支付一样的免签约支付产品，可以助你一站式解决网站签约各种支付接口的难题，现拥有支付宝、财付通、QQ钱包、微信支付等免签约支付功能，并有开发文档与SDK，可快速集成到你的网站。">
-    <meta name="keywords" content="<?=$conf['web_name']?>,支付宝免签约即时到账,财付通免签约,微信免签约支付,QQ钱包免签约,免签约支付,云支付">
+    <title><?=$conf['web_name']?> - <?=$conf['web_name_end']?></title>
+    <meta name="description" content="<?=$conf['description']?>">
+    <meta name="keywords" content="<?=$conf['keywords']?>">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="skin/js/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="skin/css/main.css" />
@@ -36,9 +36,9 @@ include ("./includes/common.php");
                         <li><a href="help.html">开发文档</a></li>
                         <li><a href="/SDK/">在线测试</a></li>
                         <li>
-                            <a href="mailto:7019732@qq.com">邮箱联系</a>
+                            <a href="mailto:<?=$conf['web_qq']?>@qq.com">邮箱联系</a>
                             <ul>
-                                <li><a href="http://wpa.qq.com/msgrd?v=3&uin=7019732&site=qq&menu=yes">联系QQ</a></li>
+                                <li><a href="http://wpa.qq.com/msgrd?v=3&uin=<?=$conf['web_qq']?>&site=qq&menu=yes">联系QQ</a></li>
                                 <li><a href="//shang.qq.com/wpa/qunwpa?idkey=e7aa2568dea1209e813dc7ba7832b31f85f79626238ad35ac38d0cd8def887a6">进入QQ群</a></li>
                             </ul>
                         </li>
@@ -51,7 +51,7 @@ include ("./includes/common.php");
 
     <!-- Banner -->
     <section id="banner">
-        <h2><?=$conf['web_name']?> - 一站式免签约支付平台</h2>
+        <h2><?=$conf['web_name']?> - <?=$conf['web_name_end']?></h2>
         <p>提供免签约支付宝、QQ钱包、微信、财付通支付.</p>
         <ul class="actions">
             <li><a href="/user" class="button">登陆商户</a></li>
@@ -136,7 +136,7 @@ include ("./includes/common.php");
         <ul class="copyright">
             <li>&copy; <?=$conf['web_name']?>. All rights reserved.</li>
             <li>Producer: <a href="#"><?=$conf['web_name']?></a></li>
-            <li>author：support@muzhifu.cc
+            <li>author：support@<?=$conf['local_domain']?>
         </ul>
         <ul class="copyright">
             <li><?=$conf['web_name']?> - 提供免签约支付接口 - 方便、快捷、便利！

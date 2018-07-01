@@ -1,6 +1,8 @@
 <?php
 //error_reporting(E_ALL); ini_set("display_errors", 1);
-error_reporting(0);
+//error_reporting(0);
+error_reporting(E_ALL);
+define('CACHE_FILE', 0);
 header("content-type:text/html;charset=utf-8");
 define('SYSTEM_ROOT', dirname(__FILE__).'/');
 define('ROOT', dirname(SYSTEM_ROOT).'/');
@@ -26,6 +28,13 @@ try {
     exit('链接数据库失败:'.$e->getMessage());
 }
 $DB->exec("set names utf8");
+$DB->query('select * from pay_config where 1')->fetch();
+include(SYSTEM_ROOT . 'cache.class.php');
+$CACHE = new CACHE();
+$conf = unserialize($CACHE->read());
+if (empty($conf['web_name'])) {
+    $conf = $CACHE->update();
+}
 
 if(!$conf['local_domain'])$conf['local_domain']=$_SERVER['HTTP_HOST'];
 $password_hash='!@#%!s!0';

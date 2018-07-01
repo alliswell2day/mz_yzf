@@ -367,4 +367,14 @@ function processOrder($srow,$notify=true){
 		do_notify($url['notify']);
 	}
 }
+
+function saveSetting($k, $v)
+{
+    global $DB;
+    $v = daddslashes($v);
+    return $DB->exec("update pay_config set v='" . $v . "' where k='" . $k . "'");
+    //return $DB->query("REPLACE INTO pay_config SET v='" . $v . "',k='" . $k . "'");
+}
+
+
 ?>

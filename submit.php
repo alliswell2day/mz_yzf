@@ -67,7 +67,7 @@ $http_to = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
 	    'appid'        =>  $muzhifu_config['partner'],
 	    'type'        =>  $type,
 	    'addtime'     =>  date('Y-m-d H:i:s'),
-        'mz_type'      => '1' //0 默认方式 or 1 本地扫码方式
+        'mz_type'      => '0' //0 默认方式 or 1 本地扫码方式
 	];
 
 	$params['mz_content'] = json_encode([
