@@ -41,7 +41,7 @@ $userrow=$DB->query("SELECT * FROM pay_user WHERE id='{$pid}' limit 1")->fetch()
 if(!md5Verify($prestr, $dataarr['sign'], $userrow['key']))sysmsg('签名校验失败，请返回重试！');
 if($userrow['active']==0)sysmsg('商户已封禁，无法支付！');
 $type=daddslashes($dataarr['type']);
-$out_trade_no=daddslashes($dataarr['out_trade_no']);
+$out_trade_no=daddslashes($dataarr['out_trade_no']);//客户提交订单号
 $notify_url=daddslashes($dataarr['notify_url']);
 $return_url=daddslashes($dataarr['return_url']);
 $name=daddslashes($dataarr['name']);
@@ -53,7 +53,7 @@ if(empty($return_url))sysmsg('回调地址(return_url)不能为空');
 if(empty($name))sysmsg('商品名称(name)不能为空');
 if(empty($money))sysmsg('金额(money)不能为空');
 if($money<=0)sysmsg('金额不合法');
-$trade_no=date("YmdHis").rand(11111,99999);
+$trade_no=date("YmdHis").rand(11111,99999);//内部生成订单号
 $domain=getdomain($notify_url);
 	if($type=='alipay')$type='alipay.trade.precreate';//支付宝支付
 	elseif($type=='qqpay')$type='qq.pay.native';//QQ支付
@@ -71,7 +71,7 @@ $http_to = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
 	];
 
 	$params['mz_content'] = json_encode([
-		'out_trade_no'	=>	$trade_no,
+		'out_trade_no'	=>	$trade_no,//内部生成订单号传到api接口
 		'subject'		=>	$name,
 		'total_amount'	=>	$money,
 		"notify_url"	=> $http_to.$_SERVER['HTTP_HOST'].'/pay_notify.php',

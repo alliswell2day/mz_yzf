@@ -10,7 +10,7 @@ require '../includes/muzhifu/muzhifu_config.php';
 error_reporting(E_ALL); ini_set("display_errors", 1);
 @header('Content-Type: text/html; charset=UTF-8');
 
-$trade_no = daddslashes($_GET['trade_no']);
+$trade_no = daddslashes($_GET['trade_no']);//此处为内部订单号
 $row = $DB->query("SELECT * FROM pay_order WHERE trade_no='{$trade_no}' limit 1")->fetch();
 if(!$row)sysmsg('该订单号不存在，请返回来源地重新发起请求！');
 $url = 'https://pay.muzhifu.cc/Zhifu/Pay/qrcode?appid='.$muzhifu_config['partner'].'&appkey='.$muzhifu_config['key'].'&trade_no='.$trade_no;
@@ -98,7 +98,7 @@ $code_url = $code['code_url'];
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "getshop.php",
+            url: "/getshop.php",
             timeout: 10000, //ajax请求超时时间10s
             data: {type: "alipay", trade_no: "<?php echo $row['trade_no']?>"}, //post数据
             success: function (data, textStatus) {

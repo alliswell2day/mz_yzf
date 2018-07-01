@@ -112,10 +112,6 @@ $RemoteFile = $res['file'];
 $ZipFile = "Archive.zip";
 copy($RemoteFile,$ZipFile) or die("无法下载更新包文件！".'<a href="update.php">返回上级</a>');
 if (zipExtract($ZipFile,ROOT)) {
-if($admin_path!='admin'){ //修改后台地址
-	deldir(ROOT.$admin_path);
-	rename(ROOT.'admin',ROOT.$admin_path);
-}
 if(function_exists("opcache_reset"))@opcache_reset();
 if(!empty($res['sql'])){
 	$sql=$res['sql'];
