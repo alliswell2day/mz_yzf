@@ -6,17 +6,17 @@ include("../includes/common.php");
 $title='检查版本更新';
 include './head.php';
 if($islogin==1){}else exit("<script language='javascript'>window.location.href='./login.php';</script>");
-
+include 'PclZip.class.php';
 //函数
 function zipExtract ($src, $dest)
 {
-$zip = new ZipArchive();
-if ($zip->open($src)===true)
-{
-$zip->extractTo($dest);
-$zip->close();
-return true;
-}
+    $pcl=new PclZip($src);
+    if($pcl->extract(
+            PCLZIP_OPT_PATH, $dest,
+            PCLZIP_OPT_REPLACE_NEWER
+    )){
+        return true;
+    }
 return false;
 }
 function deldir($dir) {
