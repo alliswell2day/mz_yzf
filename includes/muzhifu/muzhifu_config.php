@@ -6,10 +6,10 @@
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 //申请地址www.muzhifu.com
 //商户ID
-$muzhifu_config['partner']		= '';//从拇指付平台获取的APPID
+$muzhifu_config['partner']		= $conf['appid'];//从拇指付平台获取的APPID
 
 //商户KEY
-$muzhifu_config['key']			= '';//从拇指付平台获取的APPKEY
+$muzhifu_config['key']			= $conf['appkey'];//从拇指付平台获取的APPKEY
 
 
 //↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
