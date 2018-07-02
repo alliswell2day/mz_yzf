@@ -42,6 +42,10 @@ if ($islogin != 1) {
                         <li><a href="./website.php">网站信息</a></li>
                         <li><a href="./website.php?act=mail">邮箱管理</a></li>
                         <li><a href="./website.php?act=sendsms">发信管理</a></li>
+                        <li><a href="./website.php?act=pay_api">支付接口</a></li>
+                        <li><a href="./website.php?act=pay_fee">支付费率</a></li>
+                        <li><a href="./website.php?act=captcha_api">极验证码</a></li>
+                        <li><a href="./website.php?act=reg">注册管理</a></li>
                         <li><a href="./cloud.php">云平台管理</a><li>
                     </ul>
                 </li>

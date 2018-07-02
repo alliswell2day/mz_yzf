@@ -89,7 +89,6 @@ if(!empty($res['sql'])){
 			++$t;
 		} else {
 			++$e;
-			$error.=$DB->error().'<br/>';
 		}
 	}
 	$addstr='<br/>数据库更新成功。SQL成功'.$t.'句/失败'.$e.'句';

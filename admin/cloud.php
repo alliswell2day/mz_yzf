@@ -31,23 +31,17 @@ echo '<div class="panel panel-primary">
 <div class="panel-body">
   <form action="?mod=cloud_post" method="post" class="form-horizontal" role="form"><input type="hidden" name="do" value="submit"/>
 	<div class="form-group">
-	  <label class="col-sm-2 control-label">商户APPID</label>
+	  <label class="col-sm-2 control-label">对接拇指付商户APPID</label>
 	  <div class="col-sm-10"><input type="text" name="appid" value="';
 echo $conf['appid'];
 echo '" class="form-control" required/></div>
 	</div><br/>
 	<div class="form-group">
-	  <label class="col-sm-2 control-label">商户APPKEY</label>
+	  <label class="col-sm-2 control-label">对接拇指付商户APPKEY</label>
 	  <div class="col-sm-10"><input type="text" name="appkey" value="';
 echo $conf['appkey'];
 echo '" class="form-control"/></div>
-	</div><br/>
-	<div class="form-group">
-	  <label class="col-sm-2 control-label">ACCESS_TOKEN</label>
-	  <div class="col-sm-10"><input type="text" name="access_token" value="';
-echo $mzconfig['access_token'];
-echo '" class="form-control"></div>
-	</div><p>此项需要到includes/mzf_config.php中修改</p>
+	</div>
 	<div class="form-group">
 	  <div class="col-sm-offset-2 col-sm-10"><input type="submit" name="submit" value="修改" class="btn btn-primary form-control"/><br/>
 	 </div>
