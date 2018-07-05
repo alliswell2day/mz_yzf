@@ -12,7 +12,7 @@ if(isset($_GET['reset'])){
 	exit("<script language='javascript'>window.location.href='./transfer.php?batch={$batch}';</script>");
 }elseif(isset($_POST['batch']) && isset($_POST['privatekey'])){
 	$batch=$_POST['batch'];
-	if(strlen($_POST['privatekey'])<100)exit("<script language='javascript'>alert('商户私钥不正确');history.go(-1);</script>");
+	if(strlen($_POST['privatekey'])<20)exit("<script language='javascript'>alert('拇指付ACCESS_TOKEN不正确');history.go(-1);</script>");
 	$_SESSION['privatekey']=$_POST['privatekey'];
 	exit("<script language='javascript'>window.location.href='./transfer.php?batch={$batch}';</script>");
 }elseif(isset($_GET['batch']) && isset($_SESSION['privatekey'])){
@@ -141,7 +141,7 @@ var xiha={
 			<div class="input-group" style="padding:8px 0;">
 				<div class="input-group-addon btn">全选<input type="checkbox" onclick="SelectAll(this)" /></div>
 				<div class="input-group-addon btn" id="startsend">点此开始转账</div>
-				<div class="input-group-addon btn"><span onclick="window.location.href='transfer.php?reset=1&batch=<?php echo $batch?>'">重置商户私钥</span></div>
+				<div class="input-group-addon btn"><span onclick="window.location.href='transfer.php?reset=1&batch=<?php echo $batch?>'">重置ACCESS_TOKEN</span></div>
 				<div class="input-group-addon btn"><span id="allmoney">总金额</span></div>
 			</div>
 			<div id="result"></div>
@@ -180,8 +180,8 @@ $batch=$_GET['batch'];
           <div class="panel-body box">
 			<form action="transfer.php" method="post"><input type="hidden" name="batch" value="<?php echo $batch?>"/>
 			<div class="form-group">
-			<label>商户私钥：</label><br>
-			<textarea class="form-control" name="privatekey" rows="4" placeholder="填写商户私钥" required></textarea>
+			<label>拇指付ACCESS_TOKEN：</label><br>
+			<textarea class="form-control" name="privatekey" rows="4" placeholder="填写拇指付ACCESS_TOKEN" required></textarea>
 			</div>
 			<div class="form-group text-right">
 			<button type="submit" class="btn btn-primary btn-block" id="save">保存</button>

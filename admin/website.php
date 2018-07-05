@@ -326,7 +326,7 @@ $("select[name=\'mail_cloud\']").change(function(){
 ';
 }elseif($act == 'pay_fee'){
     echo '<div class="panel panel-primary">
-<div class="panel-heading"><h3 class="panel-title">支付费率配置</h3></div>
+<div class="panel-heading"><h3 class="panel-title">结算配置</h3></div>
 <div class="panel-body">
   <form action="?mod=pay_fee_post" method="post" class="form-horizontal" role="form"><input type="hidden" name="do" value="submit"/>
 	<div class="form-group">
@@ -339,6 +339,12 @@ $("select[name=\'mail_cloud\']").change(function(){
 	  <label class="col-sm-2 control-label">结算费率</label>
 	  <div class="col-sm-10"><input type="text" name="settle_rate" value="';
     echo $conf['settle_rate'];
+    echo '" class="form-control"/></div>
+	</div><br/>
+	<div class="form-group">
+	  <label class="col-sm-2 control-label">满多少结算(元)</label>
+	  <div class="col-sm-10"><input type="text" name="settle_money" value="';
+    echo $conf['settle_money'];
     echo '" class="form-control"/></div>
 	</div><br/>
 	<div class="form-group">
@@ -359,7 +365,7 @@ $("select[name=\'mail_cloud\']").change(function(){
     echo $conf['settle_open'];
     echo '">';
     echo $settle_open = $conf['settle_open'] == '0'?'<option value="0">关闭(当前)</option>':'<option value="1">开启(当前)</option>';
-    echo '<option value="0">开启</option><option value="1">关闭</option></select></div>
+    echo '<option value="0">关闭</option><option value="1">开启</option></select></div>
 	</div>
 	<div class="form-group">
 	  <div class="col-sm-offset-2 col-sm-10"><input type="submit" name="submit" value="修改" class="btn btn-primary form-control"/><br/>
@@ -437,7 +443,7 @@ $("select[name=\'mail_cloud\']").change(function(){
     echo '" class="form-control"></div>
 	</div>
 	<div class="form-group">
-	  <label class="col-sm-2 control-label">商户申请价格</label>
+	  <label class="col-sm-2 control-label">商户申请价格(元)</label>
 	  <div class="col-sm-10"><input type="text" name="reg_price" value="';
     echo $conf['reg_price'];
     echo '" class="form-control"></div>

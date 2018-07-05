@@ -14,6 +14,7 @@ if(isset($_GET['batch'])){
 	$batch=$_GET['batch'];
 	$allmoney=$_GET['allmoney'];
 	$count=$DB->query("SELECT * from pay_settle where batch='$batch'")->rowCount();
+	$settle_user=$DB->query("SELECT * from pay_settle where batch='$batch'")->fetch();
 	$srow=$DB->query("SELECT * FROM pay_batch WHERE batch='{$batch}' limit 1")->fetch();
 	if($srow['status']==0){
 		$rs=$DB->query("SELECT * from pay_settle where batch='$batch'");
@@ -32,15 +33,13 @@ if(isset($_GET['batch'])){
 			<p>当前需要结算的共有<?php echo $count?>条记录</p>
 			<p>批次号：<?php echo $batch?></p>
 			<p>总金额：<?php echo $allmoney?>元</p>
+			<p>结算账号：<?php echo $settle_user['account']?></p>
+			<p>结算姓名：<?php echo $settle_user['username']?></p>
             <p><input type="submit" value="下载CSV文件" class="btn btn-primary form-control"/></p>
           </form>
 		  <form action="transfer.php" method="get" role="form">
 		  <input type="hidden" name="batch" value="<?php echo $batch?>"/>
             <p><input type="submit" value="单笔转账到支付宝账户" class="btn btn-success form-control"/></p>
-          </form>
-		  <form action="wxtransfer.php" method="get" role="form">
-		  <input type="hidden" name="batch" value="<?php echo $batch?>"/>
-            <p><input type="submit" value="微信企业付款" class="btn btn-success form-control"/></p>
           </form>
 <?php }else{?>
 		<table class="table table-striped">

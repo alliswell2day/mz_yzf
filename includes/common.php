@@ -1,8 +1,6 @@
 <?php
 //error_reporting(E_ALL); ini_set("display_errors", 1);
-//error_reporting(0);
-error_reporting(E_ALL);
-define('CACHE_FILE', 0);
+error_reporting(0);
 header("content-type:text/html;charset=utf-8");
 define('SYSTEM_ROOT', dirname(__FILE__).'/');
 define('ROOT', dirname(SYSTEM_ROOT).'/');

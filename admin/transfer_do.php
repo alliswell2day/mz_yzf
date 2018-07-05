@@ -3,8 +3,6 @@
 include("../includes/common.php");
 if($islogin==1){}else exit("<script language='javascript'>window.location.href='./login.php';</script>");
 
-require_once SYSTEM_ROOT."f2fpay/lib/AopClient.php";
-require_once SYSTEM_ROOT."f2fpay/model/request/AlipayFundTransToaccountTransferRequest.php";
 
 if(isset($_SESSION['privatekey'])){}else exit('{"code":-1,"msg":"PrivateKey未定义"}');
 
